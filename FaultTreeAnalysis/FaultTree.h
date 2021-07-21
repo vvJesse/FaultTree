@@ -20,19 +20,23 @@ public:
         node_n = num_of_nodes;
         cut_n = 0;
 
-        for(int i = 0; i < num_of_nodes; i++){
+        for(int i = 0; i < num_of_nodes; i++)
+        {
             int num_of_child = 0, node_t = 0;
             double possible = 0.0;
             std::cin >> num_of_child >> node_t;
 
             if(!node_t)
+            {
                 std::cin >> possible;
+            }
 
             TreeNodes[i] = new node(num_of_child, node_t, possible);
         }
 
         for(int i = 0; i < 50; i++) {
-            for (int j = 0; j < 50; j++) {
+            for (int j = 0; j < 50; j++)
+            {
                 mini_cut[i][j] = -1;
             }
         }
@@ -42,44 +46,89 @@ public:
     void print_arr(){
 
         for(int i = 0; i < cut_n; i++){
-            int length = 2;
-            if(!mini_cut[i][1]) {
-                length += mini_cut[i][0];
-            }
-            for(int j = 0; j < length; j++) {
-                std::cout << mini_cut[i][j] << " ";
-            }
+            //int length = getLengthOfCut(mini_cut[i]);
+            int j = 0;
+            while(j < 50 && mini_cut[i][j] != -1)
+                std::cout << mini_cut[i][j++] << " ";
             std::cout << std::endl;
         }
 
     }
 
+    void init_array(int arr[]){
+        for(int i = 0; i < 50; i++)
+            arr[i] = -1;
+    }
+
     void getAllSubnode(){
         int *temp = new int[50];
+        init_array(temp);
+        temp[0] = 0;
         calculateAllSubnode(temp);
         delete(temp);
         print_arr();
     }
 
     //copy the number of length of elements in a[] right from pos1 to b[] right from pos2
-    void copy_array(int a[], int pos1, int length, int b[], int pos2){
-        for(int i = 0; i < length; i++) {
+    void copy_array(int *&a, int pos1, int length, int *b, int pos2){
+        for(int i = 0; i < length; i++)
+        {
             b[pos2 + i] = a[pos1 + i];
         }
     }
 
-    int getLengthOfCut(int arr[]){
+    int getLengthOfCut(int* &arr){
         int i = 0;
         while(arr[i] != -1) i++;
+        return i;
+    }
+
+    int FindGate(int* &arr){
+        int i = 0;
+        while(arr[i] != -1 && TreeNodes[arr[i]]->node_type == 0) i++;
         return i;
     }
 
     void calculateAllSubnode(int t_node[]){
 
         int length = getLengthOfCut(t_node);
-        for(int i = 0; i < length; i++){
+        int position = FindGate(t_node);
+        if(position == length)
+        {
+            // t_node have been a minimum cut when position equals to length, and should be added to subNode[]
+            copy_array(t_node, 0, length, mini_cut[cut_n++], 0);
+        }
+        else if(TreeNodes[t_node[position]]->node_type == 1)
+        {
+            // OR gate
+            for(int i = 0; i < TreeNodes[t_node[position]]->subtree_n; i++)
+            {
+                int array[50];
+                init_array(array);
+
+                copy_array(t_node, 0, position, array, 0);
+                array[position] = TreeNodes[t_node[position]]->subtree_vector[i];
+                copy_array(t_node, position + 1, length - position - 1, array, position + 1);
+
+                calculateAllSubnode(array);
+            }
 
         }
+        else if(TreeNodes[t_node[position]]->node_type == 2)
+        {
+            // AND gate
+            int array[50];
+            init_array(array);
+            int num_of_subtree = TreeNodes[t_node[position]]->subtree_n;
+            copy_array(t_node, 0, position, array, 0);
+            for (int i = 0; i < num_of_subtree; i++)
+            {
+                array[position + i] = TreeNodes[t_node[position]]->subtree_vector[i];
+            }
+            copy_array(t_node, position+1,length-position-1, array, position+num_of_subtree);
+            calculateAllSubnode(array);
+        }
+
     }
 
 };

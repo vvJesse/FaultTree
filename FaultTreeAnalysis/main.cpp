@@ -22,5 +22,6 @@ int main() {
     int n;
     std::cin >> n;
     FaultTree tree(n);
+    tree.getAllSubnode();
     return 0;
 }
