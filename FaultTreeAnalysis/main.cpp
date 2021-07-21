@@ -23,5 +23,7 @@ int main() {
     std::cin >> n;
     FaultTree tree(n);
     tree.getAllSubnode();
+    tree.FindMiniCut();
+    //std::cout << tree.CalculateTopEventPossibility() << std::endl;
     return 0;
 }
