@@ -65,11 +65,12 @@ public:
         init_array(temp);
         temp[0] = 0;
         calculateAllSubnode(temp);
+        DeleteAllRepeat();
         delete(temp);
         print_arr();
     }
 
-    //copy the number of length of elements in a[] right from pos1 to b[] right from pos2
+//copy the number of length of elements in a[] right from pos1 to b[] right from pos2
     void copy_array(int *&a, int pos1, int length, int *b, int pos2){
         for(int i = 0; i < length; i++)
         {
@@ -131,6 +132,111 @@ public:
 
     }
 
+    void DeleteAllRepeat(){
+        for(int i = 0; i < cut_n; i++)
+            DeleteRepeat(mini_cut[i]);
+    }
+
+    void DeleteRepeat(int arr[]){
+        int length = getLengthOfCut(arr);
+        int repeated[50] = {0};
+
+        for(int i = 0; i < length-1; i++){
+            if(!repeated[i]){
+                for(int j = i + 1; j < length; j++){
+                    if(arr[i] == arr[j])
+                        repeated[j] = 1;
+                }
+            }
+        }
+
+        for(int i = 0, j = 0; i < length; i++){
+            if(!repeated[i])
+                arr[j++] = arr[i];
+            else
+                arr[i] = -1;
+        }
+    }
+
+    void FindMiniCut(){
+        int prime[101] = {0};
+        int ScoreList[100] = {0};
+        bool reserved[100];
+        generatePrimeTable(prime);
+        generateScoreList(ScoreList, prime);
+        SelectReserved(ScoreList, reserved);
+        print_arr();
+    }
+
+    void SelectReserved(int ScoreList[], bool reserved[]){
+
+        for(int i = 0; i < cut_n; i++)
+            reserved[i] = true;
+
+        for(int i = 0; i < cut_n-1; i++){
+            for(int j = i + 1; j < cut_n; j++){
+                if(ScoreList[i] % ScoreList[j] == 0)
+                    reserved[i] = false;
+                if(ScoreList[j] % ScoreList[i] == 0)
+                    reserved[j] = false;
+            }
+        }
+
+        int i = 0, j = 0;
+        while(j < cut_n){
+            if(reserved[j]){
+                int k = 0;
+                while(mini_cut[j][k] != -1) {
+                    mini_cut[i][k] = mini_cut[j][k];
+                    k++;
+                }
+                while(mini_cut[i][k] != -1)
+                    mini_cut[i][k++] = -1;
+                i++;
+            }
+            j++;
+        }
+
+        int copy_cut_n = i;
+        while(i < cut_n){
+            int k = 0;
+            while(mini_cut[i][k] != -1)
+                mini_cut[i][k++] = -1;
+            i++;
+        }
+        cut_n = copy_cut_n;
+    }
+
+    void generateScoreList(int ScoreList[], int prime[]){
+        for(int i = 0; i < cut_n; i++)
+            ScoreList[i] = score(mini_cut[i], prime);
+    }
+
+    int score(int cut[], int prime[]){
+        int i = 0, score = 1;
+        while(cut[i] != -1){
+            score = score * prime[cut[i++]];
+        }
+        return score;
+    }
+
+    void generatePrimeTable(int arr[]){
+        int originTable[1001] = {0};
+        originTable[0] = originTable[1] = 1;
+
+        for(int i = 2; i <= 500; i++)
+            if(originTable[i] == 0)
+                for (int j = 2; i * j <= 1000; j++)
+                    originTable[i * j] = 1;
+
+        int i = 0, j = 0;
+        while(i < 100 && j < 1000){
+            if(originTable[j] == 0)
+                arr[i++] = j;
+            j++;
+        }
+
+    }
 };
 
 
