@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/cpp_workspace/FaultTreeAnalysis/FaultTree.cpp
+FaultTree.h
+D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
+
+D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
+iostream
+-
+node.h
+D:/cpp_workspace/FaultTreeAnalysis/node.h
+
+D:/cpp_workspace/FaultTreeAnalysis/main.cpp
+iostream
+-
+FaultTree.h
+D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
+node.h
+D:/cpp_workspace/FaultTreeAnalysis/node.h
+
+D:/cpp_workspace/FaultTreeAnalysis/node.cpp
+node.h
+D:/cpp_workspace/FaultTreeAnalysis/node.h
+
+D:/cpp_workspace/FaultTreeAnalysis/node.h
+iostream
+-
+

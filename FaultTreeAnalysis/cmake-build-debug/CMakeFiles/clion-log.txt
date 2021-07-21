@@ -1,0 +1,4 @@
+"D:\APP\clion\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\cpp_workspace\FaultTreeAnalysis
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/cpp_workspace/FaultTreeAnalysis/cmake-build-debug
