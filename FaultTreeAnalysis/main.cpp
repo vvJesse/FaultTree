@@ -21,13 +21,18 @@
 int main() {
     printf("Please input the basic information of the fault tree. "
            "\nThe input format can be referred to the example in example.txt.\n");
+
+    // Analyze the fault tree and output the result
     int n;
     std::cin >> n;
     FaultTree tree(n);
     tree.FaultTreeAnalyze();
     tree.printAnalysis();
+    // Build a binary decision diagram(BDD)
+    // with the fault tree
     BDD bdd_tree(&tree);
     bdd_tree.Build_BDD();
+    // Enter information to test the BDD
     bdd_tree.EnterInformation();
     bdd_tree.printResult();
     system("pause");
