@@ -73,12 +73,12 @@ preinstall:
 CMakeFiles/FaultTreeAnalysis.dir/all:
 	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/depend
 	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\cpp_workspace\FaultTreeAnalysis\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target FaultTreeAnalysis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\cpp_workspace\FaultTreeAnalysis\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target FaultTreeAnalysis"
 .PHONY : CMakeFiles/FaultTreeAnalysis.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FaultTreeAnalysis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\cpp_workspace\FaultTreeAnalysis\cmake-build-debug\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\cpp_workspace\FaultTreeAnalysis\cmake-build-debug\CMakeFiles 6
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/FaultTreeAnalysis.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\cpp_workspace\FaultTreeAnalysis\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/FaultTreeAnalysis.dir/rule

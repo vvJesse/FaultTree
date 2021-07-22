@@ -122,6 +122,60 @@ FaultTreeAnalysis/fast:
 	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/build
 .PHONY : FaultTreeAnalysis/fast
 
+BDD.obj: BDD.cpp.obj
+
+.PHONY : BDD.obj
+
+# target to build an object file
+BDD.cpp.obj:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD.cpp.obj
+.PHONY : BDD.cpp.obj
+
+BDD.i: BDD.cpp.i
+
+.PHONY : BDD.i
+
+# target to preprocess a source file
+BDD.cpp.i:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD.cpp.i
+.PHONY : BDD.cpp.i
+
+BDD.s: BDD.cpp.s
+
+.PHONY : BDD.s
+
+# target to generate assembly for a file
+BDD.cpp.s:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD.cpp.s
+.PHONY : BDD.cpp.s
+
+BDD_node.obj: BDD_node.cpp.obj
+
+.PHONY : BDD_node.obj
+
+# target to build an object file
+BDD_node.cpp.obj:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD_node.cpp.obj
+.PHONY : BDD_node.cpp.obj
+
+BDD_node.i: BDD_node.cpp.i
+
+.PHONY : BDD_node.i
+
+# target to preprocess a source file
+BDD_node.cpp.i:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD_node.cpp.i
+.PHONY : BDD_node.cpp.i
+
+BDD_node.s: BDD_node.cpp.s
+
+.PHONY : BDD_node.s
+
+# target to generate assembly for a file
+BDD_node.cpp.s:
+	$(MAKE) -f CMakeFiles\FaultTreeAnalysis.dir\build.make CMakeFiles/FaultTreeAnalysis.dir/BDD_node.cpp.s
+.PHONY : BDD_node.cpp.s
+
 FaultTree.obj: FaultTree.cpp.obj
 
 .PHONY : FaultTree.obj
@@ -212,6 +266,12 @@ help:
 	@echo ... rebuild_cache
 	@echo ... FaultTreeAnalysis
 	@echo ... edit_cache
+	@echo ... BDD.obj
+	@echo ... BDD.i
+	@echo ... BDD.s
+	@echo ... BDD_node.obj
+	@echo ... BDD_node.i
+	@echo ... BDD_node.s
 	@echo ... FaultTree.obj
 	@echo ... FaultTree.i
 	@echo ... FaultTree.s

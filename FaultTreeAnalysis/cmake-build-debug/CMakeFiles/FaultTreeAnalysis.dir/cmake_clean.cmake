@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/FaultTreeAnalysis.dir/BDD.cpp.obj"
+  "CMakeFiles/FaultTreeAnalysis.dir/BDD_node.cpp.obj"
   "CMakeFiles/FaultTreeAnalysis.dir/FaultTree.cpp.obj"
   "CMakeFiles/FaultTreeAnalysis.dir/main.cpp.obj"
   "CMakeFiles/FaultTreeAnalysis.dir/node.cpp.obj"

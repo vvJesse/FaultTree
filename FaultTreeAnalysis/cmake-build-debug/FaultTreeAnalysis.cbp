@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/cpp_workspace/FaultTreeAnalysis/BDD.cpp">
+			<Option target="FaultTreeAnalysis"/>
+		</Unit>
+		<Unit filename="D:/cpp_workspace/FaultTreeAnalysis/BDD.h">
+			<Option target="FaultTreeAnalysis"/>
+		</Unit>
+		<Unit filename="D:/cpp_workspace/FaultTreeAnalysis/BDD_node.cpp">
+			<Option target="FaultTreeAnalysis"/>
+		</Unit>
+		<Unit filename="D:/cpp_workspace/FaultTreeAnalysis/BDD_node.h">
+			<Option target="FaultTreeAnalysis"/>
+		</Unit>
 		<Unit filename="D:/cpp_workspace/FaultTreeAnalysis/FaultTree.cpp">
 			<Option target="FaultTreeAnalysis"/>
 		</Unit>

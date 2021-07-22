@@ -6,9 +6,15 @@
 
 #IncludeRegexTransform: 
 
-D:/cpp_workspace/FaultTreeAnalysis/FaultTree.cpp
+D:/cpp_workspace/FaultTreeAnalysis/BDD.h
 FaultTree.h
 D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
+BDD_node.h
+D:/cpp_workspace/FaultTreeAnalysis/BDD_node.h
+
+D:/cpp_workspace/FaultTreeAnalysis/BDD_node.h
+stddef.h
+-
 
 D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
 iostream
@@ -23,6 +29,8 @@ FaultTree.h
 D:/cpp_workspace/FaultTreeAnalysis/FaultTree.h
 node.h
 D:/cpp_workspace/FaultTreeAnalysis/node.h
+BDD.h
+D:/cpp_workspace/FaultTreeAnalysis/BDD.h
 
 D:/cpp_workspace/FaultTreeAnalysis/node.h
 iostream
