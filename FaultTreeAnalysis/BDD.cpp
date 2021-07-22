@@ -9,12 +9,14 @@ BDD::BDD(FaultTree* a_ft){
     BDD_head = NULL;
 }
 
-void BDD::AddBDDNode(BDD_node* head, int child){
-    BDD_node* p = head;
-    //New node is always added to "yes"
-    while(p->YES != NULL)
-        p = p->YES;
-    p->YES = new BDD_node(child);
+BDD_node* BDD::AddBDDNode(BDD_node* head, int child){
+    if(child > 0){
+        head->YES = new BDD_node(child);
+        return head->YES;
+    } else{
+        head->NO = new BDD_node(-child);
+        return head->NO;
+    }
 }
 
 BDD_node* BDD::BuildSubTree(int cut_i){
@@ -111,24 +113,39 @@ void BDD::sort(int index[], int length){
 }
 
 void BDD::Build_BDD(){
-    BDD_node* head_array[100];              // to save the subTree head
-    for(int i = 0; i < 100; i++)
-        head_array[i] = NULL;
-    int cut_n = a_FaultTree->cut_n;
-    // Build subtree
-    for(int i = 0; i < cut_n; i++)
-        head_array[i] = BuildSubTree(i);
-
-    // initialize the index[]
-    int index[100] = {0};
-    for(int i = 0; i < a_FaultTree->cut_n; i++){
-        index[i] = i;
+    int index[50], basic_n = 0;
+    for(int i = 0; i < a_FaultTree->node_n; i++){
+        if (a_FaultTree->tree_nodes[i]->node_type == 0)
+            index[basic_n++] = i;
     }
-    // sort the index[], and merge the subtree according in order
-    sort(index, a_FaultTree->cut_n);
-    BDD_head = head_array[index[0]];
-    for(int i = 1; i < cut_n; i++)
-        MergeSubtree(BDD_head, head_array[index[i]]);
+
+    int non_intersect_set[50][50];
+    for(int i = 0; i < 50; i++)
+        for(int j = 0; j < 50; j++)
+            non_intersect_set[i][j] = -1;
+
+    // j -> index, k -> minicut
+    int end_index[50] = {0};
+    for(int i = 0; i < a_FaultTree->cut_n; i++){
+        for(int j = 0, k = 0; j < basic_n; j++){
+            if(index[j] != a_FaultTree->mini_cut[i][k]){
+                non_intersect_set[i][j] = -index[j];
+            }else{
+                non_intersect_set[i][j] = index[j];
+                end_index[i] = index[j];
+                k++;
+            }
+        }
+    }
+
+    BDD_head = new BDD_node(index[0]);
+    for(int i = 0; i < a_FaultTree->cut_n; i++){
+        BDD_node* p = BDD_head;
+        for(int j = 1; j < basic_n; j++){
+            p = AddBDDNode(p, non_intersect_set[i][j]);
+        }
+    }
+    return;
 }
 
 void BDD::EnterInformation(){

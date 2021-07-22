@@ -18,7 +18,7 @@ private:
     bool cmp(int a, int b);                 // Compare 2 arrays in the minimum cuts index
     void sort(int index[], int length);     // Sort the minimum cuts index
     bool DetermineTopEvent();               // Decide the state of the top event with BDD
-    void AddBDDNode(BDD_node* head, int child);                 // ADD a BDD_node to the BDD tree
+    BDD_node* AddBDDNode(BDD_node* head, int child);                 // ADD a BDD_node to the BDD tree
     void MergeSubtree(BDD_node* head, BDD_node* subTree);       // Merge 2 subtrees
 
 public:
