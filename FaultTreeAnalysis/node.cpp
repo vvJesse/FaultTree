@@ -41,6 +41,7 @@ void node::SetRelaPbSignificance(double RPbSgc){
     RelaPbSignificance = RPbSgc;
 }
 
+// formatted output a node information
 void node::println() {
     switch (node_type){
         case 0: std::cout << "Basic_Et\t"; break;

@@ -27,7 +27,7 @@ int main() {
     std::cin >> n;
     FaultTree tree(n);
     tree.FaultTreeAnalyze();
-    tree.printAnalysis();
+    tree.PrintAnalysis();
     // Build a binary decision diagram(BDD)
     // with the fault tree
     BDD bdd_tree(&tree);

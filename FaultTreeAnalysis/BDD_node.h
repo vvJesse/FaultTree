@@ -9,10 +9,10 @@
 
 class BDD_node {
 public:
-    int ID;
-    BDD_node* NO = NULL;
-    BDD_node* YES = NULL;
-    BDD_node(int id);
+    int ID;                     // the index of the basic node in fault tree
+    BDD_node* NO = NULL;        // point to the node when choose NO
+    BDD_node* YES = NULL;       // point to the node when choose YES
+    BDD_node(int id);           // constructor
 };
 
 

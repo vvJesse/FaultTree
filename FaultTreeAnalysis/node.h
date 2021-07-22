@@ -25,7 +25,7 @@ public:
     double GetRelaPbSignificance();
     void SetPbSignificance(double PbSgc);
     void SetRelaPbSignificance(double RPbSgc);
-    void println();
+    void println();         // formatted output a node information
 
 };
 

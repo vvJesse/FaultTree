@@ -4,6 +4,7 @@
 
 #include "BDD_node.h"
 
+// constructor
 BDD_node::BDD_node(int id){
     ID = id;
 }

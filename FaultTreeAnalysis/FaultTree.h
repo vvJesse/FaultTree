@@ -14,22 +14,23 @@ class FaultTree {
 
 private:
 
-    void copy_array(int *&a, int pos1, int length, int *b, int pos2);
-    void DeleteRepeat(int arr[]);
-    void init_array(int arr[]);
-    void generatePrimeTable(int arr[]);
-    void generateScoreList(int ScoreList[], int prime[]);
+    //copy the number of length of elements in a[] right from pos1 to b[] right from pos2
+    void CopyArray(int *&a, int pos1, int length, int *b, int pos2);
+    void DeleteRepeat(int arr[]); // delete the repeated index in one cut
+    void InitArray(int *arr);
+    void GeneratePrimeTable(int *arr); // generate a prime table for each node
+    void GenerateScoreList(int *ScoreList, int *prime);
     void DeleteAllRepeat();
-    void calculateAllSubnode(int t_node[]);
+    void CalculateAllSubnode(int *t_node);
     void SelectReserved(int ScoreList[], bool reserved[]);
-    void SetTopProb(double Tpr);
+    void SetTopProb(double Tpr);    // set top event possibility
     void CalculatePbSignificance();
     void CalculateRePbSignificance();
-    void printMiniCut();
-    void printNodeInformation();
-    int getLengthOfCut(int* &arr);
+    void PrintMiniCut();            // formatted output the minimum cut
+    void PrintNodeInformation();
+    int GetLengthOfCut(int* &arr);
     int score(int cut[], int prime[]);
-    int FindGate(int* &arr);
+    int FindGate(int* &arr);        // // find the position of the first AND_Gate or OR_Gate int the cut
     double CalculateThePossibilityOfACut(int cut[]);
     double TopCalculation(double possibility[]);
     double PbSCalculation(int node_i);
@@ -40,13 +41,13 @@ public:
     int node_n;
     int cut_n;
     int mini_cut[50][50];
-    double TopProbability;
-    node* TreeNodes[100];
+    double top_probability;
+    node* tree_nodes[100];
 
     FaultTree(int num_of_nodes);
-    void getAllSubnode();
+    void GetAllSubnode();
     void FindMiniCut();
-    void printAnalysis();
+    void PrintAnalysis();
     void FaultTreeAnalyze();
     double GetTopProb();
 };
