@@ -35,8 +35,10 @@ FaultTree::FaultTree(int num_of_nodes){
 
 void FaultTree::printMiniCut(){
 
+    std::cout << "**************** Minimum Cut *****************" << std::endl;
     for(int i = 0; i < cut_n; i++){
         //int length = getLengthOfCut(mini_cut[i]);
+        std::cout << "Minimum cut " << i << ":\t";
         int j = 0;
         while(j < 50 && mini_cut[i][j] != -1)
             std::cout << mini_cut[i][j++] << " ";
@@ -304,20 +306,43 @@ void FaultTree::CalculatePbSignificance(){
         if(TreeNodes[i]->node_type == 0) {
             double PbS = PbSCalculation(i);
             TreeNodes[i]->SetPbSignificance(PbS);
+        }else{
+            TreeNodes[i]->SetPbSignificance(0);
         }
     }
 }
 
 double FaultTree::RePbSCalculation(int node_i){
+    if(TreeNodes[node_i]->node_type != 0) return 0;
     double Pbs = PbSCalculation(node_i);
     return Pbs * TreeNodes[node_i]->GetPossibility() / GetTopProb();
 }
 
 void FaultTree::CalculateRePbSignificance(){
     for(int i = 0; i < node_n; i++){
-        if(TreeNodes[i]->node_type == 0) {
-            double RePbS = RePbSCalculation(i);
-            TreeNodes[i]->SetPbSignificance(RePbS);
-        }
+        double RePbS = RePbSCalculation(i);
+        TreeNodes[i]->SetRelaPbSignificance(RePbS);
     }
+}
+
+void FaultTree::printNodeInformation(){
+    std::cout << "************** Node Information **************" << std::endl;
+    std::cout << "Index\tnode_type\tPosb\tPoSGC\tRePoSGC\tSubNode" << std::endl;
+    for(int i = 0; i < node_n; i++){
+        std::cout << "node " << i << "\t";
+        TreeNodes[i]->println();
+    }
+}
+
+void FaultTree::printAnalysis() {
+    printMiniCut();
+    printNodeInformation();
+}
+
+void FaultTree::FaultTreeAnalyze(){
+    getAllSubnode();
+    FindMiniCut();
+    CalculateTopEventPossibility();
+    CalculatePbSignificance();
+    CalculateRePbSignificance();
 }

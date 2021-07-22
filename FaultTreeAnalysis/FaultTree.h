@@ -5,17 +5,14 @@
 #ifndef FAULTTREEANALYSIS_FAULTTREE_H
 #define FAULTTREEANALYSIS_FAULTTREE_H
 
+
 #include <iostream>
 #include "node.h"
+
 
 class FaultTree {
 
 private:
-    int node_n;
-    int cut_n;
-    int mini_cut[50][50];
-    double TopProbability;
-    node* TreeNodes[100];
 
     void copy_array(int *&a, int pos1, int length, int *b, int pos2);
     void DeleteRepeat(int arr[]);
@@ -28,6 +25,8 @@ private:
     void SetTopProb(double Tpr);
     void CalculatePbSignificance();
     void CalculateRePbSignificance();
+    void printMiniCut();
+    void printNodeInformation();
     int getLengthOfCut(int* &arr);
     int score(int cut[], int prime[]);
     int FindGate(int* &arr);
@@ -38,12 +37,18 @@ private:
     double CalculateTopEventPossibility();
 
 public:
+    int node_n;
+    int cut_n;
+    int mini_cut[50][50];
+    double TopProbability;
+    node* TreeNodes[100];
+
     FaultTree(int num_of_nodes);
-    void printMiniCut();
     void getAllSubnode();
     void FindMiniCut();
-    double GetTopProb();
+    void printAnalysis();
     void FaultTreeAnalyze();
+    double GetTopProb();
 };
 
 

@@ -25,6 +25,8 @@ public:
     double GetRelaPbSignificance();
     void SetPbSignificance(double PbSgc);
     void SetRelaPbSignificance(double RPbSgc);
+    void println();
+
 };
 
 

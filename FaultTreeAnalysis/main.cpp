@@ -1,6 +1,7 @@
 #include <iostream>
 #include "FaultTree.h"
 #include "node.h"
+#include "BDD.h"
 
 /* Programmer: Wang Jincheng
  * Date: 2021/7/19 - 2021/7/25
@@ -14,16 +15,21 @@
  *            3. Solve the occurrence probability of top event,
  *            the probability significance of the bottom event,
  *            and the relative probability importance.
- *            4. Depict a binary decision diagram(BDD) and for decision
+ *            4. Depict a binary decision diagram(BDD) for decision
  * */
 
 int main() {
-    std::cout << "请输入结点个数（包括顶事件、中间事件和基本事件）：" << std::endl;
+    printf("Please input the basic information of the fault tree. "
+           "\nThe input format can be referred to the example in example.txt.\n");
     int n;
     std::cin >> n;
     FaultTree tree(n);
-    tree.getAllSubnode();
-    tree.FindMiniCut();
-    //std::cout << tree.CalculateTopEventPossibility() << std::endl;
+    tree.FaultTreeAnalyze();
+    tree.printAnalysis();
+    BDD bdd_tree(&tree);
+    bdd_tree.Build_BDD();
+    bdd_tree.EnterInformation();
+    bdd_tree.printResult();
+    system("pause");
     return 0;
 }
